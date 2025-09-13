@@ -42,15 +42,11 @@ int main(int, char**)
     game.AddPlayer("Cheater");
     game.NewGame();
 
-    Image cards_textures{ "H:/Programowanie/C++/OpenGL/Poker/assets/CardAtlas.png" };
-    GLFWimage icon[3];
-    icon[0].pixels = stbi_load("H:/Programowanie/C++/OpenGL/Poker/assets/logo.png", &icon[0].width, &icon[0].height, 0, 4);
-    icon[1].pixels = stbi_load("H:/Programowanie/C++/OpenGL/Poker/assets/logo.png", &icon[1].width, &icon[1].height, 0, 4);
-    icon[2].pixels = stbi_load("H:/Programowanie/C++/OpenGL/Poker/assets/logo.png", &icon[2].width, &icon[2].height, 0, 4);
-    glfwSetWindowIcon(window, 3, icon);
+    Image cards_textures{ "assets/CardAtlas.png" };
+    GLFWimage icon[1];
+    icon[0].pixels = stbi_load("assets/logo.png", &icon[0].width, &icon[0].height, 0, 4);
+    glfwSetWindowIcon(window, 1, icon);
     stbi_image_free(icon[0].pixels);
-    stbi_image_free(icon[1].pixels);
-    stbi_image_free(icon[2].pixels);
 
     CardCrop Table_1{ game, 0 };
     CardCrop Table_2{ game, 1 };
