@@ -157,6 +157,7 @@
     <ClInclude Include="include\Poker\Networking.h" />
     <ClInclude Include="include\Poker\Poker.h" />
     <ClInclude Include="include\Poker\UI.h" />
+    <ClInclude Include="include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\imgui\imgui.cpp" />
