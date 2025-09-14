@@ -19,12 +19,12 @@ enum class Phase : int { PreFlop, Flop, Turn, River };
 
 static std::string RankLookUpTable[13] = { "Two","Three","Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"};
 static std::string RatesLookUpTable[13] = { "None","HighCard","OnePair", "TwoPair", "TOTK", "Straight", "Flush", "FullHouse", "FOTK", "StraightFlush", "RoyalFlush" };
-static std::ostream& operator<<(std::ostream& os, const Rank& rank)
+inline std::ostream& operator<<(std::ostream& os, const Rank& rank)
 {
 	os << RankLookUpTable[(int)rank - 2];
 	return os;
 }
-static std::ostream& operator<<(std::ostream& os, const Figure& figure)
+inline std::ostream& operator<<(std::ostream& os, const Figure& figure)
 {
 	switch (figure)
 	{
@@ -46,7 +46,7 @@ static std::ostream& operator<<(std::ostream& os, const Figure& figure)
 	}
 	return os;
 }
-static std::ostream& operator<<(std::ostream& os, const Rates& rate)
+inline std::ostream& operator<<(std::ostream& os, const Rates& rate)
 {
 	os << RatesLookUpTable[(int)rate];
 	return os;
@@ -142,7 +142,7 @@ struct CardValue {
 	CardValue(Rates rate, Card weight_card) : rate(rate), weight_card(weight_card) { }
 	CardValue(Rates rate, Rank rank) : rate(rate), weight_card(Figure::Diamonds, rank) { }
 };
-static std::ostream& operator<<(std::ostream& os, const Card& card)
+inline std::ostream& operator<<(std::ostream& os, const Card& card)
 {
 	os << card.rank << " of " << card.figure;
 	return os;

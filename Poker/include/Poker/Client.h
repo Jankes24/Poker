@@ -149,14 +149,14 @@ void ClientMain()
                 if (ImGui::BeginCombo("Player to Remove", p_remove, ImGuiComboFlags_WidthFitPreview))
                 {
                     if (ImGui::Selectable(" ")) p_remove[0] = '\0';
-                    for (const auto& player : game.GetPlayers()) { if (ImGui::Selectable(player.GetNick().c_str())) strncpy_s(p_remove, sizeof(p_remove), player.GetNick().c_str(), 32); }
+                    for (const auto& player : game.GetPlayers()) { if (ImGui::Selectable(player.GetNick().c_str())) strncpy(p_remove, player.GetNick().c_str(), 32); }
                     ImGui::EndCombo();
                 } ImGui::SameLine();
                 if (ImGui::Button("Remove")) game.RemovePlayer(p_remove);
                 if (ImGui::BeginCombo("Player to Deal", p_deal, ImGuiComboFlags_WidthFitPreview))
                 {
                     if (ImGui::Selectable(" ")) p_deal[0] = '\0';
-                    for (const auto& player : game.GetPlayers()) { if (ImGui::Selectable(player.GetNick().c_str())) strncpy_s(p_deal, sizeof(p_deal), player.GetNick().c_str(), 32); }
+                    for (const auto& player : game.GetPlayers()) { if (ImGui::Selectable(player.GetNick().c_str())) strncpy(p_deal, player.GetNick().c_str(), 32); }
                     ImGui::EndCombo();
                 } ImGui::SameLine();
                 if (ImGui::Button("Deal")) game.DealHandToPlayer(p_deal);
