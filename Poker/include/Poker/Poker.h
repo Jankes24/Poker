@@ -10,7 +10,7 @@
 #include <sstream>
 #include "stb_image.h"
 #include "imgui/imgui_impl_opengl3.h"
-#include <GLFW/glfw3.h>
+#include <GLFW/glfw3.h>\
 
 enum class Figure : uint8_t {Hearts = 4, Diamonds = 3, Spades = 2, Clubs = 1, None = 0};
 enum class Rank : uint8_t {Two=2, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace, Blank};
@@ -181,8 +181,7 @@ public:
 	}
 	void LoadTextureFromFile(const char* file_name)
 	{
-		FILE* f;
-		fopen_s(&f,file_name, "rb");
+		FILE* f = fopen(file_name, "rb");
 		if (f == NULL)
 		{
 			std::cout << "Failed to open file: " << file_name << "\n";
@@ -291,7 +290,7 @@ struct CardCrop {
 			SetNewCard(card);
 			this->card = card;
 		}
-		ImGui::ImageButton(id,(ImTextureID)(intptr_t)cards_textures.texture, ImVec2(24 * size, 32 * size), ImVec2(x, y), ImVec2(w, h));
+		ImGui::ImageButton(id,(ImTextureID)(intptr_t)cards_textures.texture, ImVec2(24.0f * size, 32.0f * size), ImVec2(x, y), ImVec2(w, h));
 	}
 	static void s_Print(const char* id, const Image& cards_textures, const Card& card, int size = 6)
 	{
@@ -299,6 +298,6 @@ struct CardCrop {
 		float s_y = 0.25f * (4 - (int)card.figure);
 		float s_w = s_x + 1.0f / 14;
 		float s_h = s_y + 0.25f;
-		ImGui::ImageButton(id, (ImTextureID)(intptr_t)cards_textures.texture, ImVec2(24 * size, 32 * size), ImVec2(s_x, s_y), ImVec2(s_w, s_h));
+		ImGui::ImageButton(id, (ImTextureID)(intptr_t)cards_textures.texture, ImVec2(24.0f * size, 32.0f * size), ImVec2(s_x, s_y), ImVec2(s_w, s_h));
 	}
 };

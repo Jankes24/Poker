@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <Poker/Poker.h>
 #include <chrono>
 #include <thread>
@@ -285,7 +286,8 @@ CardValue Poker::isStraight(const Hand& hand)
 	int figureCounter[5]{};
 	figureCounter[(int)hand[0].figure]++;
 	figureCounter[(int)hand[1].figure]++;
-	for (int i = 0; i < 5; i++)
+	
+	for (int i = 0; i < (m_Phase == Phase::PreFlop ? 0 : 2) + (int)m_Phase; i++)
 		figureCounter[(int)m_Table[i].figure]++;
 
 	for (int i = 1; i < 5; i++)

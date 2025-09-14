@@ -6,7 +6,7 @@ static void glfw_error_callback(int error, const char* description)
     std::cerr << "GLFW Error " << error << ": " << description << '\n';
 }
 
-GLFWwindow* UIInit()
+static GLFWwindow* UIInit()
 {
     glfwSetErrorCallback(glfw_error_callback);
     glfwInit();
